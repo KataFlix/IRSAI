@@ -75,9 +75,6 @@
 </section>
 
 <section data-bs-version="5.1" class="article13 cid-ug2BHlwJTP mbr-parallax-background" id="article13-5k">
-    
-    
-    
     <div class="container">
         <div class="row justify-content-center">
             <div class="card col-md-12 col-lg-10">
@@ -85,7 +82,17 @@
                     <div class="card-box align-left">
                         <h4 class="card-title mbr-fonts-style display-5"><strong>Detected Oil Spillage Around Limassol?</strong></h4>
                         <p class="mbr-text mbr-fonts-style mt-4 display-7">Here's How You Can Report It and Access Important Resources.<br>Download our leaflet for more information!</p>
-                        <div class="mbr-section-btn mt-4"><a class="btn btn-danger display-4" href="https://mail.google.com/mail/u/0?ui=2&ik=a4e639769a&attid=0.1&permmsgid=msg-f:1802104454089338552&th=19025c73fa24eeb8&view=att&disp=safe">Download</a></div>
+                        <div class="mbr-section-btn mt-4">
+                            <a class="btn btn-danger display-4" 
+                               href="https://mail.google.com/mail/u/0?ui=2&ik=a4e639769a&attid=0.1&permmsgid=msg-f:1802104454089338552&th=19025c73fa24eeb8&view=att&disp=safe"
+                               onClick="gtag('event', 'download', {
+                                 'event_category': 'Leaflet',
+                                 'event_label': 'Download Button',
+                                 'value': 1
+                               });">
+                               Download
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
