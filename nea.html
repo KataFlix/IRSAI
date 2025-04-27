@@ -24,102 +24,164 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=SDWpq3"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=SDWpq3" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v22.0"></script>
 
   
   <style>
-    /* Customize the scrollbar */
-    section::-webkit-scrollbar {
-        width: 10px;
+    /* Reset default margins and paddings */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
-    section::-webkit-scrollbar-track {
-        background: #f1f1f1;
+    html, body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        background: url('background.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    /* Section Titles */
+    .section-title {
+        font-size: 28px;
+        color: #fff;
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    /* Facebook container */
+    .fb-container {
+        display: flex;
+        justify-content: center; /* Center the iframe */
+        align-items: center;
+        border: 3px solid #ffffff;
         border-radius: 10px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        width: calc(350px + 10%); /* Match iframe width + 10% */
+        margin-bottom: 40px;
     }
 
-    section::-webkit-scrollbar-thumb {
-        background: #888;
+    .fb-page {
+        width: 350px; /* Original iframe width */
+        height: auto;
+    }
+
+    /* Articles container */
+    .articles-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    /* Article item styles */
+    .article-item {
+        flex: 1 1 calc(30% - 20px);
+        max-width: calc(30% - 20px);
+        background: white;
         border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
     }
 
-    section::-webkit-scrollbar-thumb:hover {
-        background: #555;
+    .article-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    .article-content {
+        padding: 10px;
+    }
+
+    .article-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .article-content p {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 10px;
+    }
+
+    .read-more {
+        color: #007BFF;
+        text-decoration: underline;
+        font-size: 12px;
+    }
+
+    /* Adjust layout for Facebook and articles */
+    .content-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .social-news, .partner-news {
+        flex: 1 1 calc(50% - 20px);
+        max-width: calc(50% - 20px);
     }
 
     .articles-container {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    flex-direction: column;
-    margin-left:150px;
-    margin-top:100px;
-}
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
 
-.article-box {
-    width: 850px;
-    height: 150px;
-    display: flex;
-    align-items: center;
-    background: white;
-    border: 2px solid #ddd; /* Light gray border */
-    overflow: hidden;
-    transition: background 0.3s ease;
-}
+    .article-item {
+        flex: 1 1 calc(45% - 10px);
+        max-width: calc(45% - 10px);
+    }
 
-.article-box:hover {
-    background: blue;
-}
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .social-news, .partner-news {
+            flex: 1 1 100%;
+            max-width: 100%;
+        }
 
-.article-link {
-    display: flex;
-    text-decoration: none;
-    color: black;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    padding: 10px;
-}
+        .article-item {
+            flex: 1 1 100%;
+            max-width: 100%;
+        }
+    }
 
-.article-image {
-    width: 40%;
-    height: 100%;
-    object-fit: cover;
-}
-.article-text {
-    margin-left: 15px;
-    display: flex;
-    flex-direction: column;
-}
+    .social-news {
+        display: flex;
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center align the content */
+        text-align: center; /* Center align the text */
+    }
 
-.article-title {
-    margin-left: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
+    .fb-container {
+        width: calc(350px + 10%);
+        display: flex;
+        justify-content: center; /* Center the iframe */
+    }
 
-.article-read-more {
-    font-size: 14px;
-    color: grey;
-    margin-top: 5px;
-    margin-left: 15px;
-}
-
-.article-box:hover .article-title {
-    color: white;
-}
-
-.article-box:hover .article-read-more {
-    color: lightgrey;
-}
+    /* Ensure content-wrapper respects the new image */
+    .content-wrapper {
+        position: relative;
+    }
 </style>
   
 </head>
 <body>
-
 
     <section data-bs-version="5.1" class="menu menu2 cid-ug3fYgpKbP" once="menu" id="menu2-7w">
     
@@ -154,87 +216,65 @@
         </nav>
     </section>
 
-
-
 <section data-bs-version="5.1" class="header1 cid-ug27aSZ2lM mbr-fullscreen mbr-parallax-background" id="header01-54" 
-    style="display: flex; align-items: center; justify-content: flex-start; min-height: 100vh; padding-left: 5%; overflow-x: auto;">
+    style="display: flex; align-items: center; justify-content: center; min-height: 80vh; padding: 2%; overflow: hidden;">
 
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
-        <!-- Facebook Icon -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" 
-            alt="Facebook" width="50" height="50">
-        
-        <!-- Title -->
-        <h2 style="margin: 0; font-family: Arial, sans-serif; color:white; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);">Τα Μέσα Κοινωνικής Δικτύωσης μας</h2>
-        
-        <!-- Wrapper for iframe with custom border -->
-        <div style="width: 500px; max-width: 100%; border: 10px solid #ffffff; border-radius: 20px; padding: 0px;">
-            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FIRSAI.org&tabs=timeline&width=500&height=700&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" 
-                width="500" height="700" 
-                style="border:none; overflow:hidden; max-width: 100%; border-radius: 5px;" 
-                scrolling="no" frameborder="0" 
-                allowfullscreen="true" 
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-            </iframe>
+    <div class="content-wrapper">
+
+        <!-- Facebook Section -->
+        <div class="social-news">
+            <h2 class="section-title">Τα Κοινωνικά Νέα μας</h2>
+            <div id="fb-root"></div>
+            <div class="fb-container">
+                <div class="fb-page" 
+                     data-href="https://www.facebook.com/IRSAI.org" 
+                     data-tabs="timeline" 
+                     data-width="350px" 
+                     data-height="" 
+                     data-small-header="false" 
+                     data-adapt-container-width="true" 
+                     data-hide-cover="false" 
+                     data-show-facepile="true">
+                    <blockquote cite="https://www.facebook.com/IRSAI.org" class="fb-xfbml-parse-ignore">
+                        <a href="https://www.facebook.com/IRSAI.org">IRSAI</a>
+                    </blockquote>
+                </div>
+            </div>
         </div>
+
+        <!-- Articles Section -->
+        <div class="partner-news">
+            <h2 class="section-title">Νέα από τους Συνεργάτες μας</h2>
+            <div class="articles-container">
+                <div class="article-item">
+                    <img src="https://merresearch.com/wp-content/uploads/2025/02/IMG_0834_850.jpg" alt="Article 1">
+                    <div class="article-content">
+                        <h3 class="article-title">Νέο ερευνητικό έργο υδατοκαλλιέργειας – Βιωσιμότητα μέσω Ενσωματωμένης Πολυτροφικής Υδατοκαλλιέργειας (IMTA) και συνεργασίες</h3>
+                        <p>Βασιζόμενο σε προηγούμενη γνώση και αντιμετωπίζοντας τα κενά που εντοπίστηκαν σε προηγούμενα έργα της ΕΕ, το IASUS στοχεύει να…</p>
+                        <a href="https://merresearch.com/article1" class="read-more">Διαβάστε περισσότερα</a>
+                    </div>
+                </div>
+                <div class="article-item">
+                    <img src="https://merresearch.com/wp-content/uploads/2024/12/climarest-new.png" alt="Article 2">
+                    <div class="article-content">
+                        <h3 class="article-title">Συνάντηση του κονσόρτσιουμ CLIMAREST</h3>
+                        <p>Η συνάντηση του κονσόρτσιουμ που πραγματοποιήθηκε από τις 22 έως τις 24 Οκτωβρίου 2024 στη Μάλαγα, Ισπανία, συγκέντρωσε κορυφαίους επιστήμονες…</p>
+                        <a href="https://merresearch.com/article2" class="read-more">Διαβάστε περισσότερα</a>
+                    </div>
+                </div>
+                <div class="article-item">
+                    <img src="https://merresearch.com/wp-content/uploads/2024/11/WhatsApp-Image-2024-10-26-at-17.41.54_1b793af8_850x325.jpg" alt="Article 3">
+                    <div class="article-content">
+                        <h3 class="article-title">Συνάντηση εκκίνησης του Προμηθέα</h3>
+                        <p>Την περασμένη εβδομάδα, στις 25-26 Οκτωβρίου, η ομάδα μας παρακολούθησε την εναρκτήρια συνάντηση του…</p>
+                        <a href="https://merresearch.com/article3" class="read-more">Διαβάστε περισσότερα</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-
-
-
-
-    <div class="articles-container">
-
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Earth_icon_2.png/640px-Earth_icon_2.png" 
-            alt="Globe" style="width:50px; height:50; position: absolute; top: 55px;">
-        <h2 style="margin: 0; font-family: Arial, sans-serif; color:white; position: absolute; top: 106px; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);">Ειδήσεις από τον κόσμο</h2>
-        <h4 style="margin: 0; font-family: Arial, sans-serif; color: rgb(255, 255, 255); 
-    position: absolute; top: 139px; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);">
-    (Σημείωση: Η ανακατεύθυνση στο άρθρο δεν θα μεταφραστεί στα ελληνικά.)
-</h4>
-        <div class="article-box">
-        <a href="https://maritime-executive.com/article/kerch-strait-fuel-oil-spill-reaches-crimea" class="article-link" target="_blank">
-            <img src="https://maritime-executive.com/media/images/article/Photos/Pollution_Spills/Kerch-Strait-tanker-spill-cleanup-Dec-2024-Anapa-City-Hall.f9dcdf.969427.webp" alt="Article Image" class="article-image">
-            <div class="article-text">
-            <h3 class="article-title">Η διαρροή πετρελαίου από το Στενό του Κερτς φτάνει στην Κριμαία</h3>
-            <p class="article-read-more">Διαβάστε περισσότερα</p>
-            </div>
-        </a>
-        </div>
-    
-        <div class="article-box">
-        <a href="https://maritime-executive.com/article/singapore-oil-spill-during-bunker-operation-for-bulker" class="article-link" target="_blank">
-            <img src="https://maritime-executive.com/media/images/article/Photos/Vessels_Large/Ines-Corrado.c3fe21.jpg" alt="Article Image" class="article-image">
-            <div class="article-text">
-            <h3 class="article-title">Διαρροή Πετρελαίου στη Σιγκαπούρη Κατά τη Διάρκεια Επιχείρησης Εφοδιασμού για Χύδην Φορτίο</h3>
-            <p class="article-read-more">Διαβάστε περισσότερα</p>
-            </div>
-        </a>
-        </div>
-    
-        <div class="article-box">
-        <a href="https://maritime-executive.com/article/eu-says-no-oil-spill-so-far-from-burning-tanker-sounion" class="article-link" target="_blank">
-            <img src="https://maritime-executive.com/media/images/article/Photos/Wreckage_Salvage/Sounion-fires-August-25.a50238.jpg" alt="Article Image" class="article-image">
-            <div class="article-text">
-            <h3 class="article-title">Η ΕΕ λέει ότι δεν υπάρχει διαρροή πετρελαίου (μέχρι στιγμής) από το φλεγόμενο δεξαμενόπλοιο Σούνιο</h3>
-            <p class="article-read-more">Διαβάστε περισσότερα</p>
-            </div>
-        </a>
-        </div>
-    
-        <div class="article-box">
-        <a href="https://maritime-executive.com/article/two-sunken-tankers-at-kerch-strait-were-refueling-russia-s-dark-fleet" class="article-link" target="_blank">
-            <img src="https://maritime-executive.com/media/images/article/Photos/People/Volgoneft-239-cleanup-Jan-2025-Morspas-2.423990.jpg" alt="Article Image" class="article-image">
-            <div class="article-text">
-            <h3 class="article-title">Δύο Βυθισμένα Τάνκερ στο Στενό του Κερτς Επανατροφοδοτούσαν τον Σκοτεινό Στόλο της Ρωσίας</h3>
-            <p class="article-read-more">Διαβάστε περισσότερα</p>
-            </div>
-        </a>
-        </div>
-    </div>
-
 </section>
-
-
 
 <section data-bs-version="5.1" class="footer4 cid-ug3erJeOq3" once="footers" id="footer4-7l">
 
@@ -275,24 +315,10 @@
             </div>
         </div>
     </div>
-</section>
-
-
-
+</section> 
 
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v22.0"></script>
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-M12N08CP1G"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-M12N08CP1G');
-</script>
-<!-- End Google Analytics -->
 
 
 </body>
